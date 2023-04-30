@@ -1,0 +1,22 @@
+.footer {
+    margin-top: 4rem;
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: var(--second);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+        height: 80px;
+    }
+}
+
+.about-me {
+    display: flex;
+    flex-direction: column;
+    .about-item {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+}

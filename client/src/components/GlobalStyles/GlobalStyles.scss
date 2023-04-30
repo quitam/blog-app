@@ -1,0 +1,89 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+:root {
+    --primary: #38b6ff;
+    --second: #5ce1e6;
+    --black: #242d49;
+    --text-color: #333;
+    --gray: rgba(36, 45, 73, 0.65);
+    --profileShadow: 0px 4px 17px 2px rgba(0, 0, 0, 0.25);
+    --hrColor: #cfcdcd;
+    --cardColor: rgba(255, 255, 255, 0.64);
+    --buttonBg: linear-gradient(90deg, #5ce1e6 0%, #38b6ff 100%);
+    --inputColor: rgba(40, 52, 62, 0.07);
+    --blue: #02AED6;
+    --green: #11CD88;
+    --red: #E8107C;
+    --yellow: #FDB21A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+}
+
+.app {
+    display: flex;
+    justify-content: center;
+    .container {
+        width: 1024px;
+    }
+}
+
+.logo {
+    color: coral;
+    font-weight: bold;
+    user-select: none;
+}
+
+input,
+button,
+[tabindex] {
+    border: none;
+    outline: none;
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+// img {
+//     max-width: 100%;
+// }
+button {
+    cursor: pointer;
+}
+
+.button {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary);
+    color: white;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    background: var(--buttonBg);
+    transition: all 100ms ease-out;
+    &:hover {
+        background: transparent;
+        color: var(--primary);
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

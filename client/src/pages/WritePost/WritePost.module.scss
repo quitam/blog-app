@@ -1,0 +1,83 @@
+.container {
+    padding: 3rem 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.content {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    input {
+        padding: 1rem;
+        border: 1px solid #ccc;
+        &:focus {
+            border-color: black;
+        }
+    }
+}
+
+.menu {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .item {
+        border: 1px solid var(--second);
+        border-radius: 4px;
+        padding: 1rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 1.4rem;
+        color: #555;
+        h1 {
+            font-size: 2rem;
+        }
+        .file {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .abc {
+            text-align: center;
+        }
+        .cat {
+            display: flex;
+            gap: 2px;
+            label {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.actions {
+    padding: 1rem 1rem 0;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+        padding: 5px 10px;
+        border-radius: 4px;
+        background-color: transparent;
+        border: 1px solid red;
+        transition: all .2s ease-out;
+    }
+    .save {
+        color: var(--yellow);
+        border-color: var(--yellow);
+        &:hover {
+            color: white;
+            background-color: var(--yellow);
+        }
+    }
+    .update {
+        color: var(--green);
+        border-color: var(--green);
+        &:hover {
+            color: white;
+            background-color: var(--green);
+        }
+    }
+}

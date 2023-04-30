@@ -1,0 +1,75 @@
+.container {
+    background-color: var(--second);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    padding: 1rem;
+    background-color: #fff;
+    min-width: 25%;
+    min-height: 50%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    .title {
+        color: darkorchid;
+        font-size: 15px;
+    }
+    p {
+        color: #5b5d8b;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .link {
+        color: red;
+        text-decoration: underline;
+        &:hover {
+            color: darken($color: red, $amount: 10%);
+        }
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 10px;
+    input {
+        padding: 8px;
+        width: 100%;
+        border-bottom: 1px solid var(--second);
+    }
+    label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        color: var(--primary);
+        cursor: pointer;
+        &:hover {
+            color: darken($color: #38b6ff, $amount: 20%);
+        }
+        img {
+            width: 32px;
+        }
+    }
+    .signup-btn {
+        background-color: darken($color: #38b6ff, $amount: 20%);
+        border-radius: 4px;
+        color: rgb(205, 205, 205);
+        padding: 8px;
+        font-weight: bold;
+        font-size: 15px;
+        transition: 0.4s;
+        &:hover {
+            background-color: var(--primary);
+            color: #fff;
+        }
+    }
+}

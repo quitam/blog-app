@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './WritePost.module.scss';
+import { FiUpload } from 'react-icons/fi';
+import { TfiClose } from 'react-icons/tfi';
+
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -9,10 +12,43 @@ const cx = classNames.bind(styles);
 
 const WritePost = () => {
     const [value, setValue] = useState('');
+    const [image, setimage] = useState(null);
+
+    const handleChangeImage = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            const img = e.target.files[0];
+            img.preview = URL.createObjectURL(img);
+            setimage(img);
+        }
+    };
 
     return (
         <div className={cx('container')}>
             <div className={cx('content')}>
+                <div className={cx('wrap-image')}>
+                    {/* show label if don't have image */}
+                    {!image && (
+                        <div>
+                            <input
+                                style={{ display: 'none' }}
+                                type="file"
+                                name="file"
+                                id="file"
+                                onChange={handleChangeImage}
+                            />
+                            <label className={cx('file')} htmlFor="file">
+                                <span>Upload Image</span>
+                                <span>
+                                    <FiUpload size={20} />
+                                </span>
+                            </label>
+                        </div>
+                    )}
+                    {/* preview image */}
+                    {image && <img src={image.preview} alt="preview" className={cx('preview-image')} />}
+                    {/* button clear image */}
+                    {image && <TfiClose className={cx('btn-close')} onClick={() => setimage(null)} />}
+                </div>
                 <input type="text" placeholder="Title" />
                 <div className={cx('editor-container')}>
                     <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} />
@@ -27,10 +63,7 @@ const WritePost = () => {
                     <span>
                         <b>Visibility: </b> Public
                     </span>
-                    <input style={{ display: 'none' }} type="file" name="file" id="file" />
-                    <label className={cx('file')} htmlFor="file">
-                        Upload Image
-                    </label>
+
                     <div className={cx('actions')}>
                         <button className={cx('save')}>Save as a draft</button>
                         <button className={cx('update')}>Update</button>
@@ -39,7 +72,7 @@ const WritePost = () => {
                 <div className={cx('item')}>
                     <h1>Category</h1>
                     <div className={cx('cat')}>
-                        <input type="radio" name="cat" id="education" value="education" />
+                        <input type="radio" name="cat" id="education" value="education" defaultChecked />
                         <label htmlFor="education">Education</label>
                     </div>
 

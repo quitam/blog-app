@@ -1,5 +1,5 @@
 .container {
-    padding: 3rem 0;
+    padding: 5rem 0;
     display: flex;
     gap: 2rem;
 }
@@ -18,6 +18,37 @@
     }
 }
 
+.wrap-image {
+    position: relative;
+    border: 1px solid #ccc;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .file {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &:hover {
+            color: var(--primary);
+        }
+    }
+    .preview-image {
+        max-height: 298px;
+        object-fit: contain;
+    }
+    .btn-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+        &:hover {
+            color: var(--red);
+        }
+    }
+}
+
 .menu {
     flex: 2;
     display: flex;
@@ -26,21 +57,15 @@
     .item {
         border: 1px solid var(--second);
         border-radius: 4px;
-        padding: 1rem;
+        padding: 1rem 2rem;
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
         font-size: 1.4rem;
         color: #555;
         h1 {
             font-size: 2rem;
-        }
-        .file {
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        .abc {
             text-align: center;
         }
         .cat {
@@ -48,6 +73,9 @@
             gap: 2px;
             label {
                 cursor: pointer;
+                &:hover {
+                    color: var(--primary);
+                }
             }
         }
     }
@@ -70,6 +98,7 @@
         &:hover {
             color: white;
             background-color: var(--yellow);
+            scale: 1.1;
         }
     }
     .update {
@@ -78,6 +107,7 @@
         &:hover {
             color: white;
             background-color: var(--green);
+            scale: 1.1;
         }
     }
 }

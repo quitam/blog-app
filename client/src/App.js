@@ -56,6 +56,8 @@ const router = createBrowserRouter([
 function App() {
     return (
         <div className="app">
+            <div className="blur" style={{ top: '10%', right: '-10%' }}></div>
+            <div className="blur" style={{ top: '50%', left: '-5%' }}></div>
             <div className="container">
                 <RouterProvider router={router} />
             </div>

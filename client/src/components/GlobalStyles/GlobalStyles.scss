@@ -37,6 +37,15 @@ body {
 .app {
     display: flex;
     justify-content: center;
+    background-color: #f3f3f3;
+    .blur {
+        position: fixed;
+        width: 28rem;
+        height: 20rem;
+        border-radius: 50%;
+        background: var(--second);
+        filter: blur(72px);
+    }
     .container {
         width: 1024px;
     }

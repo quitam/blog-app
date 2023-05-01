@@ -93,6 +93,32 @@ button {
     }
 }
 
+
+/* width */
+
 ::-webkit-scrollbar {
-    display: none;
+    width: 7px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: darken($color: #02AED6, $amount: 10%);
 }

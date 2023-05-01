@@ -34,6 +34,7 @@ const Home = () => {
             img: 'https://images.pexels.com/photos/6157049/pexels-photo-6157049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         },
     ];
+
     return (
         <div className={cx('container')}>
             <div className={cx('list-post')}>

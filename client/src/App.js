@@ -16,11 +16,15 @@ import {
 
 const DefaultLayout = () => {
     return (
-        <>
-            <Header />
-            <Outlet />
-            <Footer />
-        </>
+        <div className="app">
+            <div className="blur" style={{ top: '10%', right: '-10%' }}></div>
+            <div className="blur" style={{ top: '50%', left: '-5%' }}></div>
+            <div className="app-container">
+                <Header />
+                <Outlet />
+                <Footer />
+            </div>
+        </div>
     );
 };
 
@@ -54,15 +58,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-    return (
-        <div className="app">
-            <div className="blur" style={{ top: '10%', right: '-10%' }}></div>
-            <div className="blur" style={{ top: '50%', left: '-5%' }}></div>
-            <div className="container">
-                <RouterProvider router={router} />
-            </div>
-        </div>
-    );
+    return <RouterProvider router={router} />;
 }
 
 export default App;

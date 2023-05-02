@@ -25,8 +25,11 @@ const Register = () => {
                 password: password,
             });
             if (res.status === 200) {
-                toast.dark('User has been created!');
+                toast.dark('Success. Please Login');
             }
+            setTimeout(() => {
+                navigate('/login');
+            }, 3000);
         } catch (error) {
             toast.dark(error.response.data);
         }
@@ -38,7 +41,7 @@ const Register = () => {
 
     return (
         <div>
-            <ToastContainer />
+            <ToastContainer autoClose={3000} />
             <div className={cx('container')}>
                 <div className={cx('wrapper')}>
                     <span className="logo" style={{ fontSize: '24px' }}>

@@ -48,6 +48,7 @@ body {
     }
     .app-container {
         width: 1024px;
+        min-height: 100vh;
     }
 }
 
@@ -76,23 +77,22 @@ button {
     cursor: pointer;
 }
 
-.button {
-    user-select: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--primary);
-    color: white;
-    border-radius: 0.7rem;
-    cursor: pointer;
-    background: var(--buttonBg);
-    transition: all 100ms ease-out;
-    &:hover {
-        background: transparent;
-        color: var(--primary);
-    }
-}
-
+// .button {
+//     user-select: none;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     border: 2px solid var(--primary);
+//     color: white;
+//     border-radius: 0.7rem;
+//     cursor: pointer;
+//     background: var(--buttonBg);
+//     transition: all 100ms ease-out;
+//     &:hover {
+//         background: transparent;
+//         color: var(--primary);
+//     }
+// }
 
 /* width */
 

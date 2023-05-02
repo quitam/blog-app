@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './DetailPost.module.scss';
 import { FiEdit3, FiTrash2 } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Recommend from '../../components/Recommend';
+import { AuthContext } from '../../context/authContext';
+import axios from 'axios';
 
 const cx = classNames.bind(styles);
 
 const DetailPost = () => {
+    const [post, setPost] = useState({});
+    const location = useLocation();
+    const postId = location.pathname.split('/')[2];
+    const { currentUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axios.get(`/posts/${postId}`);
+                setPost(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        fetchData();
+    }, [postId]);
     return (
         <div className={cx('container')}>
             <div className={cx('content')}>

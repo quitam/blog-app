@@ -10,6 +10,18 @@
     gap: 5rem;
     &:nth-child(2n+1) {
         flex-direction: row-reverse;
+        .post-content {
+            h1 {
+                text-align: end;
+            }
+        }
+        p {
+            text-align: end;
+        }
+        .button {
+            display: flex;
+            justify-content: flex-end;
+        }
     }
     .post-img {
         flex: 2;
@@ -50,11 +62,18 @@
         flex-direction: column;
         justify-content: space-between;
         h1 {
-            font-size: 4.5rem;
-            line-height: 1.3;
+            font-size: 4rem;
+            line-height: 1.2;
+            text-align: left;
         }
         p {
             font-size: 1.8rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            /* number of lines to show */
+            //line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
         button {
             width: max-content;

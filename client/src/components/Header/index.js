@@ -5,14 +5,14 @@ import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import Logo from '../../assets/logo/logo.png';
 import { IoCreate } from 'react-icons/io5';
-import { Avatar, Menu, MenuItem } from '@mui/material';
+import { Menu, MenuItem } from '@mui/material';
 import { MdEditNote, MdLogout } from 'react-icons/md';
 import { AuthContext } from '../../context/authContext';
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
-    const { currentUser, logout } = useContext(AuthContext);
+    const { currentUser, logout, ContextAvatar } = useContext(AuthContext);
     console.log(currentUser);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -22,37 +22,6 @@ const Header = () => {
     };
     const handleClose = () => {
         setAnchorEl(null);
-    };
-
-    const stringToColor = (name) => {
-        let hash = 0;
-        let i;
-
-        /* eslint-disable no-bitwise */
-        for (i = 0; i < name.length; i += 1) {
-            hash = name.charCodeAt(i) + ((hash << 5) - hash);
-        }
-
-        let color = '#';
-
-        for (i = 0; i < 3; i += 1) {
-            const value = (hash >> (i * 8)) & 0xff;
-            color += `00${value.toString(16)}`.slice(-2);
-        }
-        /* eslint-enable no-bitwise */
-        return color;
-    };
-
-    const stringAvatar = (name) => {
-        return {
-            sx: {
-                cursor: 'pointer',
-                bgcolor: stringToColor(name),
-                width: 40,
-                height: 40,
-            },
-            children: `${name.split(' ')[0][0]}${name.split(' ')[name.split(' ').length - 1][0]}`,
-        };
     };
 
     return (
@@ -92,7 +61,8 @@ const Header = () => {
                     {currentUser && (
                         <div>
                             <div className={cx('profile')} onClick={handleClick}>
-                                <Avatar src={currentUser.avatar} {...stringAvatar(currentUser.fullname)} />
+                                {/* <Avatar src={currentUser.avatar} {...stringAvatar(currentUser.fullname)} /> */}
+                                <ContextAvatar />
                             </div>
                             <Menu
                                 anchorEl={anchorEl}

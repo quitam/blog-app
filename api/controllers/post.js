@@ -3,14 +3,17 @@ import jwt from "jsonwebtoken";
 
 export const getAllPost = (req, res) => {
   const q = req.query.cat
-    ? "SELECT * FROM posts WHERE cat=?"
-    : "SELECT * FROM posts";
+    ? //get list post by category
+      "SELECT * FROM posts WHERE cat=?"
+    : //get all posts
+      "SELECT * FROM posts";
 
-  db.query(q, [req.query.cat], (err, data) => {
+  db.query(q, [req.query.cat, req.params.id], (err, data) => {
     if (err) return res.status(500).send(err);
     return res.status(200).json(data);
   });
 };
+
 export const getPost = (req, res) => {
   const q =
     "SELECT p.id,`fullname`,`title`, `img`, `avatar`, `uid`,`desc`,`cat`,`date` FROM posts p, users u WHERE p.uid = u.id AND p.id=?";

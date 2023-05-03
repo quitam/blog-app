@@ -89,7 +89,7 @@ const DetailPost = () => {
             </div>
             <div className={cx('vertical-line')}></div>
             <div className={cx('recommend')}>
-                <Recommend />
+                <Recommend cat={post.cat} post={post} />
             </div>
         </div>
     );

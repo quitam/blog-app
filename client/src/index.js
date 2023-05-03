@@ -2,19 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GlobalStyles from '../src/components/GlobalStyles';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContextProvider } from './context/authContext';
+import ScrollToTop from './components/ScrollToTop';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <GlobalStyles>
-            <AuthContextProvider>
-                <App />
-            </AuthContextProvider>
-        </GlobalStyles>
-    </React.StrictMode>,
+    <AuthContextProvider>
+        <BrowserRouter>
+            <ScrollToTop />
+            <App />
+        </BrowserRouter>
+    </AuthContextProvider>,
 );
 
 // If you want to start measuring performance in your app, pass a function

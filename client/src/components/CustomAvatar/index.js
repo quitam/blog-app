@@ -22,20 +22,17 @@ const CustomAvatar = ({ avatar, fullname }) => {
     };
 
     const stringAvatar = (fullname) => {
-        // check for first render component
-        if (fullname) {
-            const array = fullname.split(' ');
-            console.log(fullname);
-            return {
-                sx: {
-                    cursor: 'pointer',
-                    bgcolor: stringToColor(fullname),
-                    width: 40,
-                    height: 40,
-                },
-                children: `${array[0][0]}${array[array.length - 1][0]}`,
-            };
-        }
+        const array = fullname.split(' ');
+        console.log(fullname);
+        return {
+            sx: {
+                cursor: 'pointer',
+                bgcolor: stringToColor(fullname),
+                width: 40,
+                height: 40,
+            },
+            children: `${array[0][0]}${array[array.length - 1][0]}`,
+        };
     };
     return <Avatar src={avatar} {...stringAvatar(fullname)} />;
 };

@@ -8,6 +8,7 @@ import Recommend from '../../components/Recommend';
 import { AuthContext } from '../../context/authContext';
 import CustomAvatar from '../../components/CustomAvatar';
 import axios from 'axios';
+import moment from 'moment';
 
 const cx = classNames.bind(styles);
 
@@ -31,50 +32,28 @@ const DetailPost = () => {
     return (
         <div className={cx('container')}>
             <div className={cx('content')}>
-                <img
-                    src="https://images.pexels.com/photos/7008010/pexels-photo-7008010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                    alt=""
-                />
+                {post.img && <img src={post.img} alt="" />}
                 <div className={cx('user')}>
-                    <CustomAvatar avatar={post?.avatar} fullname={post?.fullname} />
+                    {post.fullname && <CustomAvatar avatar={post?.avatar} fullname={post?.fullname} />}
                     <div className={cx('info')}>
                         <span>{post.fullname}</span>
-                        <p>Posted 2 days ago</p>
+                        <p>Posted {moment(post.date).fromNow()}</p>
                     </div>
-                    <div className={cx('action')}>
-                        <Link to={`/write-post?edit=2`}>
-                            <div className={cx('btn', 'edit')}>
-                                <FiEdit3 size={18} />
+                    {currentUser.id === post.uid && (
+                        <div className={cx('action')}>
+                            <Link to={`/write-post?edit=2`}>
+                                <div className={cx('btn', 'edit')}>
+                                    <FiEdit3 size={18} />
+                                </div>
+                            </Link>
+                            <div className={cx('btn', 'delete')}>
+                                <FiTrash2 size={18} />
                             </div>
-                        </Link>
-                        <div className={cx('btn', 'delete')}>
-                            <FiTrash2 size={18} />
                         </div>
-                    </div>
+                    )}
                 </div>
-                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur recusandae dolor, repudiandae quae
-                    minima natus optio illum nemo totam a, molestiae quaerat fugit atque, quod magnam vero quas?
-                    Aspernatur, blanditiis!
-                    <br />
-                    <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nisi necessitatibus enim expedita
-                    doloremque dolorum quas sapiente unde consequuntur, a, commodi officia. Soluta quis totam itaque in
-                    magni eos accusamus.
-                    <br />
-                    <br />
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat, eius numquam ratione unde cum
-                    laborum cumque. Nulla rerum, explicabo ipsa, deserunt beatae neque, molestiae laboriosam laborum
-                    accusantium officia omnis ullam.
-                    <br />
-                    <br />
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat, eius numquam ratione unde cum
-                    laborum cumque. Nulla rerum, explicabo ipsa, deserunt beatae neque, molestiae laboriosam laborum
-                    accusantium officia omnis ullam.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat,
-                    eius numquam ratione unde cum laborum cumque. Nulla rerum, explicabo ipsa, deserunt beatae neque,
-                    molestiae laboriosam laborum accusantium officia omnis ullam.
-                </p>
+                <h1>{post.title}</h1>
+                <p>{post.desc}</p>
             </div>
             <div className={cx('vertical-line')}></div>
             <div className={cx('recommend')}>

@@ -5,14 +5,9 @@ import WritePost from './pages/WritePost';
 import DetailPost from './pages/DetailPost';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import GlobalStyles from '../src/components/GlobalStyles';
 
-import {
-    createBrowserRouter,
-    Outlet,
-    // createRoutesFromElements,
-    // Route,
-    RouterProvider,
-} from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 const DefaultLayout = () => {
     return (
@@ -28,37 +23,53 @@ const DefaultLayout = () => {
     );
 };
 
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <DefaultLayout />,
-        children: [
-            {
-                path: '/',
-                element: <Home />,
-            },
-            {
-                path: '/write-post',
-                element: <WritePost />,
-            },
-            {
-                path: '/post/:id',
-                element: <DetailPost />,
-            },
-        ],
-    },
-    {
-        path: '/login',
-        element: <Login />,
-    },
-    {
-        path: '/register',
-        element: <Register />,
-    },
-]);
+// const router = createBrowserRouter([
+//     {
+//         path: '/',
+//         element: <DefaultLayout />,
+//         children: [
+//             {
+//                 path: '/',
+//                 element: <Home />,
+//             },
+//             {
+//                 path: '/write-post',
+//                 element: <WritePost />,
+//             },
+//             {
+//                 path: '/post/:id',
+//                 element: <DetailPost />,
+//             },
+//         ],
+//     },
+//     {
+//         path: '/login',
+//         element: <Login />,
+//     },
+//     {
+//         path: '/register',
+//         element: <Register />,
+//     },
+// ]);
+
+// function App() {
+//     return <RouterProvider router={router} />;
+// }
 
 function App() {
-    return <RouterProvider router={router} />;
+    return (
+        <GlobalStyles>
+            <Routes>
+                <Route path="/" element={<DefaultLayout />}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/write-post" element={<WritePost />} />
+                    <Route path="/post/:id" element={<DetailPost />} />
+                </Route>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+            </Routes>
+        </GlobalStyles>
+    );
 }
 
 export default App;

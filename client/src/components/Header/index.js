@@ -8,12 +8,12 @@ import { IoCreate } from 'react-icons/io5';
 import { Menu, MenuItem } from '@mui/material';
 import { MdEditNote, MdLogout } from 'react-icons/md';
 import { AuthContext } from '../../context/authContext';
+import CustomAvatar from '../CustomAvatar';
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
-    const { currentUser, logout, ContextAvatar } = useContext(AuthContext);
-    console.log(currentUser);
+    const { currentUser, logout } = useContext(AuthContext);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -62,7 +62,7 @@ const Header = () => {
                         <div>
                             <div className={cx('profile')} onClick={handleClick}>
                                 {/* <Avatar src={currentUser.avatar} {...stringAvatar(currentUser.fullname)} /> */}
-                                <ContextAvatar />
+                                <CustomAvatar avatar={currentUser.avatar} fullname={currentUser.fullname} />
                             </div>
                             <Menu
                                 anchorEl={anchorEl}

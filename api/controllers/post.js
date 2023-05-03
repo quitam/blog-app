@@ -10,7 +10,12 @@ export const getAllPost = (req, res) => {
   });
 };
 export const getPost = (req, res) => {
-  res.json("from controller");
+  const q =
+    "SELECT p.id,`fullname`,`title`, `img`, `avatar`, `uid`,`desc`,`cat`,`date` FROM posts p, users u WHERE p.uid = u.id AND p.id=?";
+  db.query(q, [req.params.id], (err, data) => {
+    if (err) return res.status(500).json(err);
+    return res.status(200).json(data[0]);
+  });
 };
 export const addPost = (req, res) => {
   res.json("from controller");

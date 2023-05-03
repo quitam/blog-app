@@ -11,7 +11,6 @@ const Home = () => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const cat = useLocation().search;
-    console.log(cat);
     useEffect(() => {
         const fecthData = async () => {
             try {

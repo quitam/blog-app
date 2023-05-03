@@ -6,6 +6,7 @@ import { FiEdit3, FiTrash2 } from 'react-icons/fi';
 import { Link, useLocation } from 'react-router-dom';
 import Recommend from '../../components/Recommend';
 import { AuthContext } from '../../context/authContext';
+import CustomAvatar from '../../components/CustomAvatar';
 import axios from 'axios';
 
 const cx = classNames.bind(styles);
@@ -35,12 +36,9 @@ const DetailPost = () => {
                     alt=""
                 />
                 <div className={cx('user')}>
-                    <img
-                        src="https://images.pexels.com/photos/6489663/pexels-photo-6489663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                        alt=""
-                    />
+                    <CustomAvatar avatar={post?.avatar} fullname={post?.fullname} />
                     <div className={cx('info')}>
-                        <span>John</span>
+                        <span>{post.fullname}</span>
                         <p>Posted 2 days ago</p>
                     </div>
                     <div className={cx('action')}>

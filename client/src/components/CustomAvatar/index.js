@@ -23,7 +23,7 @@ const CustomAvatar = ({ avatar, fullname }) => {
 
     const stringAvatar = (fullname) => {
         const array = fullname.split(' ');
-        console.log(fullname);
+
         return {
             sx: {
                 cursor: 'pointer',

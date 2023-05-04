@@ -17,11 +17,17 @@
         height: 200px;
         border-radius: 4px;
         object-fit: cover;
+        &:hover {
+            opacity: 0.6;
+        }
     }
     h2 {
         color: #555;
         font-size: 1.8rem;
         text-align: justify;
+        &:hover {
+            opacity: 0.6;
+        }
     }
     .wrap-btn {
         display: flex;

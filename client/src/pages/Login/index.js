@@ -21,7 +21,6 @@ const Login = () => {
                 email: email,
                 password: password,
             });
-            console.log(res);
             if (res.status === 200) {
                 toast.dark('Login success');
                 setTimeout(() => {

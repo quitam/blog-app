@@ -8,7 +8,6 @@ export const AuthContextProvider = ({ children }) => {
 
     const login = async (user) => {
         const res = await axios.post('/auth/login', user);
-
         setCurrentUser(res.data);
         return res;
     };

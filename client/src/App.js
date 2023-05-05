@@ -7,7 +7,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import GlobalStyles from '../src/components/GlobalStyles';
 
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './context/authContext';
 
 const DefaultLayout = () => {
     return (
@@ -57,16 +59,18 @@ const DefaultLayout = () => {
 // }
 
 function App() {
+    const { currentUser } = useContext(AuthContext);
+    console.log(currentUser);
     return (
         <GlobalStyles>
             <Routes>
                 <Route path="/" element={<DefaultLayout />}>
                     <Route path="/" element={<Home />} />
-                    <Route path="/write-post" element={<WritePost />} />
+                    <Route path="/write-post" element={currentUser ? <WritePost /> : <Navigate to="/login" />} />
                     <Route path="/post/:id" element={<DetailPost />} />
                 </Route>
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={currentUser ? <Navigate to="/" /> : <Login />} />
+                <Route path="/register" element={currentUser ? <Navigate to="/" /> : <Register />} />
             </Routes>
         </GlobalStyles>
     );

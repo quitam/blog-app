@@ -73,7 +73,7 @@ const DetailPost = () => {
                     </div>
                     {currentUser?.id === post.uid && (
                         <div className={cx('action')}>
-                            <Link to={`/write-post?edit=2`}>
+                            <Link to={`/write-post?edit=2`} state={post}>
                                 <div className={cx('btn', 'edit')}>
                                     <FiEdit3 size={18} />
                                 </div>

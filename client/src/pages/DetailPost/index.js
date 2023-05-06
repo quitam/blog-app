@@ -21,6 +21,11 @@ const DetailPost = () => {
     const postId = location.pathname.split('/')[2];
     const { currentUser } = useContext(AuthContext);
 
+    const parseText = (text) => {
+        const doc = new DOMParser().parseFromString(text, 'text/html');
+        return doc.body.textContent;
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -85,7 +90,7 @@ const DetailPost = () => {
                     )}
                 </div>
                 <h1>{post.title}</h1>
-                <p>{post.desc}</p>
+                <p>{parseText(post.desc)}</p>
             </div>
             <div className={cx('vertical-line')}></div>
             <div className={cx('recommend')}>

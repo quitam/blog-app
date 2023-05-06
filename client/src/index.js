@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContextProvider } from './context/authContext';
+
 import ScrollToTop from './components/ScrollToTop';
 import { BrowserRouter } from 'react-router-dom';
 

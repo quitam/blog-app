@@ -13,9 +13,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
 
-// app.get("/test", (req, res) => {
-//   res.json("It work!!!!");
-// });
+app.get("/", (req, res) => {
+  res.json("It work!!!!");
+});
 
 app.listen(8800, () => {
   console.log("Connected");

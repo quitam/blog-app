@@ -61,7 +61,6 @@ const Header = () => {
                     {currentUser && (
                         <div>
                             <div className={cx('profile')} onClick={handleClick}>
-                                {/* <Avatar src={currentUser.avatar} {...stringAvatar(currentUser.fullname)} /> */}
                                 <CustomAvatar avatar={currentUser.avatar} fullname={currentUser.fullname} />
                             </div>
                             <Menu

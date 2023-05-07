@@ -6,6 +6,7 @@ import classNames from 'classnames/bind';
 import styles from './Register.module.scss';
 import { FcAddImage } from 'react-icons/fc';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const cx = classNames.bind(styles);
 
@@ -18,25 +19,39 @@ const Register = () => {
     const [avatar, setAvatar] = useState();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        toast.dark('Processing...');
+        const avatarUrl = await upload();
         try {
             const res = await axios.post('/auth/register', {
                 fullname: fullName,
                 email: email,
                 password: password,
+                avatar: avatarUrl ? avatarUrl : '',
             });
             if (res.status === 200) {
-                toast.dark('Success. Please Login');
+                Swal.fire('Success', 'Signup success. Please login', 'success');
             }
-            setTimeout(() => {
-                navigate('/login');
-            }, 3000);
+            navigate('/login');
         } catch (error) {
             toast.dark(error.response.data);
         }
     };
-    const handleUpload = (e) => {
-        const file = e.target.files[0];
-        setAvatar(file);
+    const handleChangeImage = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            const img = e.target.files[0];
+            setAvatar(img);
+        }
+    };
+    const upload = async () => {
+        const formData = new FormData();
+        formData.append('file', avatar);
+        formData.append('upload_preset', 'blog_app_react_avatar');
+        try {
+            const res = await axios.post('https://api.cloudinary.com/v1_1/dvj9yelrz/image/upload', formData);
+            return res.data.secure_url;
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -79,7 +94,7 @@ const Register = () => {
                         />
                         {password !== confirmPass && <span className={cx('err')}>Confirm password not match</span>}
 
-                        <input style={{ display: 'none' }} type="file" id="file" onChange={handleUpload} />
+                        <input style={{ display: 'none' }} type="file" id="file" onChange={handleChangeImage} />
                         <label htmlFor="file">
                             <FcAddImage size={30} />
                             {avatar ? <span>{avatar.name}</span> : <span>Add avatar</span>}

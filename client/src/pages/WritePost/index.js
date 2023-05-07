@@ -23,7 +23,7 @@ const WritePost = () => {
     const [image, setimage] = useState(state?.img || null);
     const [cat, setCat] = useState(state?.cat || 'education');
 
-    const handleChangeImage = async (e) => {
+    const handleChangeImage = (e) => {
         if (e.target.files && e.target.files[0]) {
             const img = e.target.files[0];
             img.preview = URL.createObjectURL(img);

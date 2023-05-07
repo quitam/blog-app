@@ -65,7 +65,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<DefaultLayout />}>
                     <Route path="/" element={<Home />} />
-                    {/* <Route path="/write-post" element={currentUser ? <WritePost /> : <Navigate to="/login" />} /> */}
+                    <Route path="/write-post" element={currentUser ? <WritePost /> : <Navigate to="/login" />} />
                     <Route path="/write-post" element={<WritePost />} />
                     <Route path="/post/:id" element={<DetailPost />} />
                 </Route>

@@ -56,7 +56,7 @@ const Register = () => {
 
     return (
         <div>
-            <ToastContainer autoClose={3000} />
+            <ToastContainer />
             <div className={cx('container')}>
                 <div className={cx('wrapper')}>
                     <span className="logo" style={{ fontSize: '24px' }}>

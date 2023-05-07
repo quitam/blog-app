@@ -33,7 +33,7 @@ const Login = () => {
     };
     return (
         <div className={cx('container')}>
-            <ToastContainer autoClose={3000} />
+            <ToastContainer />
             <div className={cx('wrapper')}>
                 <span className="logo" style={{ fontSize: '24px' }}>
                     Tama Blog

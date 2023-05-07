@@ -46,6 +46,7 @@ const Home = () => {
                         </div>
                     </div>
                 ))}
+                {posts.length === 0 && <span>No post</span>}
             </div>
         </div>
     );

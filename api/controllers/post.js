@@ -5,9 +5,9 @@ import jwt from "jsonwebtoken";
 export const getAllPost = (req, res) => {
   const q = req.query.cat
     ? //get list post by category
-      "SELECT * FROM posts WHERE cat=?"
+      "SELECT * FROM posts WHERE cat=? order by `date`"
     : //get all posts
-      "SELECT * FROM posts";
+      "SELECT * FROM posts order by `date`";
 
   db.query(q, [req.query.cat, req.params.id], (err, data) => {
     if (err) return res.status(500).send(err);

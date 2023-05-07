@@ -11,6 +11,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import moment from 'moment';
 import Swal from 'sweetalert2';
+import DOMPurify from 'dompurify';
 
 const cx = classNames.bind(styles);
 
@@ -20,11 +21,6 @@ const DetailPost = () => {
     const navigate = useNavigate();
     const postId = location.pathname.split('/')[2];
     const { currentUser } = useContext(AuthContext);
-
-    const parseText = (text) => {
-        const doc = new DOMParser().parseFromString(text, 'text/html');
-        return doc.body.textContent;
-    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -90,7 +86,11 @@ const DetailPost = () => {
                     )}
                 </div>
                 <h1>{post.title}</h1>
-                <p>{parseText(post.desc)}</p>
+                <p
+                    dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(post.desc),
+                    }}
+                ></p>
             </div>
             <div className={cx('vertical-line')}></div>
             <div className={cx('recommend')}>

@@ -1,10 +1,9 @@
 #BLOG APP
 
-Front-end: ReactJS
-
-Back-end: NodeJS, express
-
-Database: MySQL
+Technologies:
++ Front-end: ReactJS
++ Back-end: NodeJS, express
++ Database: MySQL
 
 Web function:
 + Authen (contextAPI): Login, Logout, Register

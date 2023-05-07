@@ -1,7 +1,9 @@
 #BLOG APP
 
 Front-end: ReactJS
+
 Back-end: NodeJS, express
+
 Database: MySQL
 
 Web function:
